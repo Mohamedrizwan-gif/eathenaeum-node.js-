@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --fontcursive: cursive;
+}
+
+.f-countainer-outer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.f-container {
+    border: 1px solid #e7e2e2;
+    padding: 30px;
+    border-radius: 10px 10px 0 0;
+}
+
+.f-container-bottom {
+    background-color: #e1dada;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 0 0 10px 10px;
+}

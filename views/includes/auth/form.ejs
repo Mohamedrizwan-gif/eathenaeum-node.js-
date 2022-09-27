@@ -1,0 +1,37 @@
+<form class="f-countainer-outer" id="<% if(login) { %>login<% } else { %>signup<% } %>">
+    <div class="container f-container">
+        <h1><%= formtitle %></h1>
+        <p><%= description %></p>
+        <hr/>
+        <div class="mb-3 mt-3">
+            <label for="email" class="form-label"><b>Email</b></label>
+            <input type="email" placeholder="Enter Email" class="form-control" name="email" required/>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="mb-3">
+            <label for="psw" class="form-label"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" class="form-control" name="psw" required/>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <% if(!login) { %>
+        <div class="mb-3">
+            <label for="psw" class="form-label"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Enter Password" class="form-control" name="psw" required/>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>        
+        <% } %>
+        <button type="submit" class="btn btn-success w-100"><%= formtitle %></button>
+    </div>
+    <% if(login) { %>
+        <div class="container f-container-bottom">
+            <p>Don't have an account yet? <a href="/signup">Sign up</a></p>
+        </div>
+    <% } else { %>
+        <div class="container f-container-bottom">
+            <p>Already have an account? <a href="/login">Sign in</a></p>
+        </div>
+    <% } %>
+</form>
