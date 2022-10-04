@@ -1,3 +1,16 @@
 <%- include('includes/header.ejs') %> 
 <%- include('includes/navbar.ejs') %>
+<h2>Publications</h2>
+<div class="publish-outer">
+    <% for (publish of publications) {%>
+        <button class="publish"><%= publish %></button>
+    <% } %>
+</div>
+<input type="text"/>
+<div id="author" class="publish-outer">
+    <% for (author of authors) {%>
+        <button class="publish" onclick="navigateauthorpage(event)"><%= author %></button>
+    <% } %>
+</div>
+<button class="btn btn-primary w-75 mx-auto d-block my-2 " onclick="loadauthor()">Load More</button>
 <%- include('includes/footer.ejs') %>

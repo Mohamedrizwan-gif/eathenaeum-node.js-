@@ -1,2 +1,8 @@
 #dependencies
 /node_modules
+
+#ignore log files
+*.log
+
+# ignore serviceaccountjson
+/serviceAccountKey.json

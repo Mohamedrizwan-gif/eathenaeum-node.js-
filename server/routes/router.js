@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const handler = require('../controller/handle');
 
-router.get('/', (req, res) => {
-    res.render('index', {
-        title: 'E-Athenaeum'
-    });
-});
+router.get('/', handler.index);
 
 router.get('/login', (req, res) => {
     res.render('login', {
@@ -25,8 +22,15 @@ router.get('/signup', (req, res) => {
     });
 });
 
+router.get('/result', handler.result);
+
 router.get('/cart', (req, res) => {
-    res.render('cart');
+    res.render('cart', {
+        title: undefined
+    });
 });
+
+router.post('/login', handler.login);
+router.post('/signup', handler.signup);
 
 module.exports = router;

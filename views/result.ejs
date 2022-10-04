@@ -1,0 +1,14 @@
+<%- include('includes/header.ejs') %> 
+<div class="result-container">
+    <% for (let books of resultbooks) { %>
+        <div class="result">
+            <p><%=author%></p>
+            <p><b>Book Title:</b> <%=books['Book-Title']%></p>
+            <p><b>ISBN:</b> <%=books['ISBN']%></p>
+            <p><b>Publisher:</b> <%=books['Publisher']%></p>
+            <p><b>Year:</b> <%=books['Year-Of-Publication']%></p>
+            <button class="btn btn-success d-block mx-auto">ADD TO CART</button>
+        </div>
+    <% } %>
+</div>
+<%- include('includes/footer.ejs') %> 

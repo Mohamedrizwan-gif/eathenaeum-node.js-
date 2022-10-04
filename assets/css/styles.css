@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-:root {
-    --fontcursive: cursive;
-}
-
 .f-countainer-outer {
     display: flex;
     flex-direction: column;
@@ -28,4 +24,37 @@
     height: 50px;
     line-height: 50px;
     border-radius: 0 0 10px 10px;
+}
+
+.publish-outer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.publish {
+    width: auto;
+    height: 60px;
+    background-color: cadetblue;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    margin: 5px;
+    padding: 5px;
+}
+
+.result-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.result {
+    background: beige;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    width: max-content;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 10px;
 }
