@@ -25,11 +25,19 @@ signupfrom?.addEventListener('submit', (event) => {
                 'password': pwd
             })
         })
+        .then(res => Promise.all([Promise.resolve(res.status), res.json()]))
         .then(res => {
-            console.log(res);
+            if(res[0] === 400) {
+                
+            }
         })
         .catch(err => console.log(err));
     }    
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+       
 });
 
 function loadauthor() {
@@ -49,9 +57,26 @@ function loadauthor() {
 }
 
 function navigateauthorpage(author) {
-    window.location.assign(`/result?search=${author.srcElement.innerHTML}`);
+    window.location.assign(`/view?search=${author.srcElement.innerHTML}`);
+} 
+
+function onAuthorSearch(event) {
+    event.preventDefault();
+    const search = event.srcElement[0].value;
+    window.location.assign(`/?search=${search}`);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function onAddCart(event) {
+    const isbn = event.srcElement.id;
+    // fetch(url + '/cart', {
+    //     method: 'POST', 
+    //     body: JSON.stringify({
+    //         ISBN: isbn,
 
-});
+    //     })
+    // })
+    // .then(() => {})
+    // .catch(err => {
+    //     console.log(err);
+    // });
+}
