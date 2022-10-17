@@ -5,11 +5,7 @@ const auth_handler = require('../controller/auth_handler');
 
 router.get('/', page_handler.index);
 router.get('/view', page_handler.view);
-router.get('/cart', (req, res) => {
-    res.render('cart', {
-        title: undefined
-    });
-});
+router.get('/cart', page_handler.getcart);
 
 router.get('/login', (req, res) => {
     res.render('login', {
@@ -27,7 +23,9 @@ router.get('/signup', (req, res) => {
         description: 'Please fill in this form to create an account.'
     });
 });
+
 router.post('/login', auth_handler.login);
 router.post('/signup', auth_handler.signup);
+router.post('/cart', page_handler.postcart);
 
 module.exports = router;
