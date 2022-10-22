@@ -3,14 +3,14 @@
 <div class="result-container">
     <% for (let books of resultbooks) { %>
         <div class="result">
-            <div class="author-name"><%=author%></div>
+            <div class="author-name"><%= books['BookAuthor'] %></div>
             <hr/>
-            <p><b>Book Title:</b> <%=books['Book-Title']%></p>
-            <p><b>ISBN:</b> <%=books['ISBN']%></p>
-            <p><b>Publisher:</b> <%=books['Publisher']%></p>
-            <p><b>Year:</b> <%=books['Year-Of-Publication']%></p>
-            <p><b>Price: $<%=books['Price']%></b></p>
-            <button id="<%=books['ISBN']%>" class="btn btn-success d-block mx-auto" onclick="onAddCart(event)">ADD TO CART</button>
+            <p><b>Book Title:</b> <%=books['BookTitle']%></p>
+            <p><b>ISBN:</b> <%=books['BookIsbn']%></p>
+            <p><b>Publisher:</b> <%=books['BookPublisher']%></p>
+            <p><b>Year:</b> <%=books['YearOfPublish']%></p>
+            <p><b>Price: $<%=books['BookPrice']%></b></p>
+            <button id="<%=books['BookIsbn']%>" class="btn btn-success d-block mx-auto" onclick="onAddCart(event)">ADD TO CART</button>
         </div>
     <% } %>
 </div>

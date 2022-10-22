@@ -65,3 +65,7 @@
     font-family: 'Fira Sans', sans-serif;
     text-align: center;
 }
+
+.carousel-item {
+    background-color: brown;
+}

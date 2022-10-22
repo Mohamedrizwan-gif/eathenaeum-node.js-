@@ -38,6 +38,24 @@ signupfrom?.addEventListener('submit', (event) => {
     }
 });
 
+function loadpublisher() {
+    const search = location.search.split('?');
+    let limit = 0;
+    if (search.length == 1) {
+        limit = 10;
+    }
+    else {
+        limit = search[1].split('=')[1];
+    }
+    let lim = Number(limit) + 10;
+    if (search.length == 1) {
+        lim = 10;
+    }
+    window.location.assign(`/?limitpublish=${lim}#publish`);
+}
+
+window.loadpublisher = loadpublisher;
+
 function loadauthor() {
     const search = location.search.split('?');
     let limit = 0;
@@ -51,24 +69,38 @@ function loadauthor() {
     if (search.length == 1) {
         lim = 10;
     }
-    window.location.assign(`/?author=${lim}#author`);
+    window.location.assign(`/?limitauthor=${lim}#author`);
 }
 
 window.loadauthor = loadauthor;
 
-function navigateauthorpage(author) {
-    window.location.assign(`/view?search=${author.srcElement.innerHTML}`);
+function navigatebookview(event) {
+    window.location.assign(`/view?searchpublish=${event.srcElement.innerHTML}`);
 }
 
-window.navigateauthorpage = navigateauthorpage;
+window.navigatebookview = navigatebookview;
+
+function navigateauthorview(event) {
+    window.location.assign(`/view?searchauthor=${event.srcElement.innerHTML}`);
+}
+
+window.navigateauthorpage = navigateauthorview;
 
 function onAuthorSearch(event) {
     event.preventDefault();
     const search = event.srcElement[0].value;
-    window.location.assign(`/?search=${search}`);
+    window.location.assign(`/?author=${search}`);
 }
 
 window.onAuthorSearch = onAuthorSearch;
+
+function onBookSearch(event) {
+    event.preventDefault();
+    const search = event.srcElement[0].value;
+    window.location.assign(`/?book=${search}`);
+}
+
+window.onBookSearch = onBookSearch;
 
 document.addEventListener('DOMContentLoaded', () => {
     pagecart();

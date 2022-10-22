@@ -1,18 +1,56 @@
 <%- include('includes/header.ejs') %> 
 <%- include('includes/navbar.ejs') %>
-<h2>Publications</h2>
-<div class="publish-outer">
-    <% for (publish of publications) {%>
-        <button class="publish"><%= publish %></button>
-    <% } %>
+<div id="demo" class="carousel slide" data-bs-ride="carousel">
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>
+    
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/img/home1.jpg" alt="Los Angeles" class="d-block mx-auto" style="height:400px;object-fit:contain;">
+      </div>
+      <div class="carousel-item">
+        <img src="/img/home2.jpg" alt="Chicago" class="d-block mx-auto" style="height:400px;object-fit:contain;">
+      </div>
+      <div class="carousel-item">
+        <img src="/img/home3.jpg" alt="New York" class="d-block mx-auto" style="height:400px;object-fit:contain;">
+      </div>
+    </div>
+    
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
 </div>
+  
+<h3>Find book by publication</h3>
+<form class="input-group w-75 mx-auto mb-2 mt-2" onsubmit="onBookSearch(event)">
+    <input class="form-control" type="text" placeholder="Search..."/>
+    <button type="submit" class="btn btn-success">Search</button>
+</form>
+<div id="publish" class="publish-outer">
+  <% for(let book of books) { %>
+    <button class="publish" onclick="navigatebookview(event)"><%= book %></button>
+  <% } %>
+</div>
+<% if(load_publish) { %>
+<button class="btn btn-primary w-75 mx-auto d-block my-2 " onclick="loadpublisher()">Load More</button>
+<% } %>
+<h3>Find book by author</h3>
 <form class="input-group w-75 mx-auto mb-2 mt-2" onsubmit="onAuthorSearch(event)">
     <input class="form-control" type="text" placeholder="Search..."/>
     <button type="submit" class="btn btn-success">Search</button>
 </form>
 <div id="author" class="publish-outer">
     <% for (author of authors) {%>
-        <button class="publish" onclick="navigateauthorpage(event)"><%= author %></button>
+        <button class="publish" onclick="navigateauthorview(event)"><%= author %></button>
     <% } %>
 </div>
 <% if(authors.length === 0) { %>
@@ -21,7 +59,7 @@
         <p class="fw-bold">No Result Found</p>
     </div>
 <% } %>
-<% if(load_more) { %>
+<% if(load_author) { %>
 <button class="btn btn-primary w-75 mx-auto d-block my-2 " onclick="loadauthor()">Load More</button>
 <% } %>
 <%- include('includes/footer.ejs') %>

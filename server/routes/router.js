@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const page_handler = require('../controller/page_handler');
+const page_handler_index = require('../controller/page_handler/index');
+const page_handler_view = require('../controller/page_handler/view');
 const auth_handler = require('../controller/auth_handler');
 
-router.get('/', page_handler.index);
-router.get('/view', page_handler.view);
+router.get('/', page_handler_index);
+router.get('/view', page_handler_view);
 router.get('/cart', page_handler.getcart);
 
 router.get('/login', (req, res) => {
