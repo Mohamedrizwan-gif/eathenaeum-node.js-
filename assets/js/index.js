@@ -7,8 +7,27 @@ const url = 'http://localhost:3200';
 
 loginform?.addEventListener('submit', (event) => {
     event.preventDefault();
-    console.log('login');
-    location.href = '/';
+    const email = event.target[0].value;
+    const pwd = event.target[1].value;
+
+    fetch(url + '/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            'email': email,
+            'password': pwd
+        })
+    })
+        .then(res => Promise.all([Promise.resolve(res.status), res.json()]))
+        .then(res => {
+            console.log(res)
+            if (res[0] === 400) {
+
+            }
+        })
+        .catch(err => console.log(err));
 });
 
 signupfrom?.addEventListener('submit', (event) => {
@@ -30,6 +49,7 @@ signupfrom?.addEventListener('submit', (event) => {
         })
             .then(res => Promise.all([Promise.resolve(res.status), res.json()]))
             .then(res => {
+                console.log(res)
                 if (res[0] === 400) {
 
                 }

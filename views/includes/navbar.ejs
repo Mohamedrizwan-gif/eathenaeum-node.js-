@@ -1,16 +1,21 @@
-<nav class="navbar navbar-expand bg-light navbar-light">
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
     <div class="container-fluid">
-        <ul class="navbar-nav w-100">
-            <li class="nav-item">
-              <a style="font-family: cursive;" class="navbar-brand nav-link" href="/">E-Athenaeum</a>
-            </li>
-            <li class="nav-item ms-auto">
-                <a href="/login" class="btn">Log In</a>
-                <a href="/signup" class="btn btn-primary">Sign Up</a>
-            </li>
-            <li>
-                <a href="/cart" class="btn btn-outline-info">Cart</a>
-            </li>
-        </ul>    
+        <a class="navbar-brand" href="#">E-Athenaeum</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/signup">Signup</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/cart">Cart</a>
+                  </li>
+            </ul>
+        </div>
     </div>
 </nav>
