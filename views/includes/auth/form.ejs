@@ -4,26 +4,25 @@
         <p><%= description %></p>
         <hr/>
         <div class="mb-3 mt-3">
-            <label for="email" class="form-label"><b>Email*</b></label>
+            <label for="email" class="form-label"><b>Email</b></label>
             <input type="email" placeholder="Enter Email" class="form-control" name="email" required/>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
         <div class="mb-3">
-            <label for="psw" class="form-label"><b>Password*</b></label>
+            <label for="psw" class="form-label"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" class="form-control" name="psw" required/>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
         <% if(!login) { %>
         <div class="mb-3">
-            <label for="repsw" class="form-label"><b>Repeat Password*</b></label>
-            <input type="password" placeholder="Enter Password" class="form-control" name="repsw" required/>
+            <label for="psw" class="form-label"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Enter Password" class="form-control" name="psw" required/>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>        
         <% } %>
-        <div style="display:none;" id="auth-message" class="alert alert-info"></div>
         <button type="submit" class="btn btn-success w-100"><%= formtitle %></button>
     </div>
     <% if(login) { %>
