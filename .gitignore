@@ -3,6 +3,7 @@ node_modules/
 
 #ignore files
 *.log
-*.env
+config.env
 
-.vscode/
+#ignore folders
+.vscode
