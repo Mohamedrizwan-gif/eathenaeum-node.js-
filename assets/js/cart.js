@@ -2,6 +2,7 @@ const url = 'http://localhost:3200';
 
 function onaddqty(event) {
     let cart = localStorage.getItem('cart');
+    console.log(cart);
     const product = event.currentTarget.parentElement.parentElement.previousSibling.previousSibling;
     const total = event.currentTarget.parentElement.parentElement.nextSibling;
     const input = event.currentTarget.parentElement.children[1];
@@ -41,6 +42,8 @@ function onsubqty(event) {
                 cart = JSON.parse(cart);
                 let tmpcart = [...cart];
                 tmpcart = tmpcart.filter(tpcart => Number(tpcart.id) !== isbn);
+                console.log(tmpcart);
+                console.log(product.parentElement)
                 product.parentElement.remove();
                 localStorage.setItem('cart', JSON.stringify(tmpcart));
                 return;
@@ -129,6 +132,7 @@ function pagecart() {
                     let div = document.createElement('div');
                     let button = document.createElement('button');
                     button.classList.add('btn', 'btn-sub');
+                    button.addEventListener('click', onsubqty);
                     let i = document.createElement('i');
                     i.classList.add('fa', 'fa-angle-down');
                     button.appendChild(i);
@@ -142,6 +146,7 @@ function pagecart() {
                     div.appendChild(input);
                     button = document.createElement('button');
                     button.classList.add('btn', 'btn-add');
+                    button.addEventListener('click', onaddqty);
                     i = document.createElement('i');
                     i.classList.add('fa', 'fa-angle-up');
                     button.appendChild(i);
@@ -157,10 +162,6 @@ function pagecart() {
                     td.appendChild(h6);
                     tr.appendChild(td);
                     productbody.appendChild(tr);
-                    const btnadd = document.getElementsByClassName('btn-add');
-                    btnadd[0].addEventListener('click', onaddqty);
-                    const btnsub = document.getElementsByClassName('btn-sub');
-                    btnsub[0].addEventListener('click', onsubqty);
                 }
             })
             .catch(err => console.log('err', err));

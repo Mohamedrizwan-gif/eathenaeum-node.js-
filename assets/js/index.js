@@ -119,7 +119,7 @@ function navigateauthorview(event) {
     window.location.assign(`/view?searchauthor=${event.srcElement.innerHTML}`);
 }
 
-window.navigateauthorpage = navigateauthorview;
+window.navigateauthorview = navigateauthorview;
 
 function onPublishSearch(event) {
     event.preventDefault();
