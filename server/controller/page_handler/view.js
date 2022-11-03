@@ -1,9 +1,9 @@
 const fs = require('fs');
 const csv = require('csv-parser');
 const filtered_book = 'assets/data/filtered_book_4.csv';
-const books = [];
 
 module.exports = (req, res) => {
+    const books = [];
     const query = req.query;
     fs.createReadStream(filtered_book)
     .pipe(csv())

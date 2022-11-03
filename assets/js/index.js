@@ -3,7 +3,9 @@ import view from '/js/view.js';
 
 const loginform = document.getElementById('login');
 const signupfrom = document.getElementById('signup');
-const url = 'http://localhost:3200';
+const alertmsg = document.getElementById('auth-message');
+const url = window.origin;
+// 'http://localhost:3200';
 
 loginform?.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -22,9 +24,17 @@ loginform?.addEventListener('submit', (event) => {
     })
         .then(res => Promise.all([Promise.resolve(res.status), res.json()]))
         .then(res => {
-            console.log(res)
-            if (res[0] === 400) {
-
+            console.log(res);
+            if (res[0] === 401) {
+                alertmsg.innerHTML = '';
+                const message = res[1].message;
+                const strong = document.createElement('strong');
+                strong.innerText = message;
+                alertmsg.appendChild(strong);
+                alertmsg.style.display = 'block';
+            }
+            if(res[0] == 200) {
+                window.location.assign('/');
             }
         })
         .catch(err => console.log(err));
@@ -49,7 +59,7 @@ signupfrom?.addEventListener('submit', (event) => {
         })
             .then(res => Promise.all([Promise.resolve(res.status), res.json()]))
             .then(res => {
-                console.log(res)
+                console.log(res);
                 if (res[0] === 400) {
 
                 }

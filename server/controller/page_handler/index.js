@@ -1,13 +1,16 @@
 const fs = require('fs');
 const csv = require('csv-parser');
 const filtered_book = 'assets/data/filtered_book_4.csv';
-const books = [];
 
 module.exports = (req, res) => {
+    const books = [];
     fs.createReadStream(filtered_book)
         .pipe(csv())
-        .on('data', (data) => books.push(data))
+        .on('data', (data) => {
+            books.push(data);
+        })
         .on('end', () => {
+            book_pushed = true;
             const query = req.query;
             let book_author = Object.keys(books[0])[0];
             let publisher = Object.keys(books[0])[4];

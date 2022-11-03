@@ -3,12 +3,26 @@ const firebase = require('../../config/firebase');
 
 module.exports.login = async (req, res) => {
     const { email, password } = req.body;
+    console.log(email);
     try {
         const auth = getAuth(firebase);
         const response = await signInWithEmailAndPassword(auth, email, password);
+        if(response && response._tokenResponse) {
+            res.status(200).json({
+                idToken: response._tokenResponse.idToken,
+                message: 'login successfully'
+            });
+        }
         console.log(response);
     }
     catch (err) {
+        if(err && err.code) {
+            const message = err.code.split('/')[1];
+            res.status(401).json({
+                message: message
+            });
+        }
+        console.log(err);
         console.log(Object.keys(err.customData));
     }
 }
