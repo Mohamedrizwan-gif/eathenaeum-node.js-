@@ -60,12 +60,15 @@ signupfrom?.addEventListener('submit', (event) => {
 
 function loadpublisher() {
     const search = location.search.split('?');
+    
     let limit = 0;
     if (search.length == 1) {
         limit = 10;
     }
     else {
-        limit = search[1].split('=')[1];
+        if(!search[1].includes('book')) {
+            limit = search[1].split('=')[1];
+        }
     }
     let lim = Number(limit) + 10;
     if (search.length == 1) {
@@ -83,7 +86,9 @@ function loadauthor() {
         limit = 10;
     }
     else {
-        limit = search[1].split('=')[1];
+        if(!search[1].includes('book')) {
+            limit = search[1].split('=')[1];
+        }
     }
     let lim = Number(limit) + 10;
     if (search.length == 1) {
@@ -106,6 +111,14 @@ function navigateauthorview(event) {
 
 window.navigateauthorpage = navigateauthorview;
 
+function onPublishSearch(event) {
+    event.preventDefault();
+    const search = event.srcElement[0].value;
+    window.location.assign(`/?publish=${search}`);
+}
+
+window.onPublishSearch = onPublishSearch;
+
 function onAuthorSearch(event) {
     event.preventDefault();
     const search = event.srcElement[0].value;
@@ -113,14 +126,6 @@ function onAuthorSearch(event) {
 }
 
 window.onAuthorSearch = onAuthorSearch;
-
-function onBookSearch(event) {
-    event.preventDefault();
-    const search = event.srcElement[0].value;
-    window.location.assign(`/?book=${search}`);
-}
-
-window.onBookSearch = onBookSearch;
 
 document.addEventListener('DOMContentLoaded', () => {
     pagecart();

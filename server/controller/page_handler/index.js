@@ -45,7 +45,7 @@ module.exports = (req, res) => {
                 }
             }
             if(search_publish) {
-                filtered_search_publish = search_book.filter(Boolean);
+                filtered_search_publish = search_publish.filter(Boolean);
                 filtered_search_publish = [...new Set(filtered_search_publish)];
             }
             if(filtered_search_publish === undefined) {
