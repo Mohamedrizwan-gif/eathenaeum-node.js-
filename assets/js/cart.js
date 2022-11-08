@@ -1,9 +1,7 @@
 const url = window.location.origin;
-// 'http://localhost:3200';
 
 function onaddqty(event) {
     let cart = localStorage.getItem('cart');
-    console.log(cart);
     const product = event.currentTarget.parentElement.parentElement.previousSibling.previousSibling;
     const total = event.currentTarget.parentElement.parentElement.nextSibling;
     const input = event.currentTarget.parentElement.children[1];
