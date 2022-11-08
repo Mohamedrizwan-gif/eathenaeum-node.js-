@@ -1,4 +1,5 @@
-const url = 'http://localhost:3200';
+const url = window.location.origin;
+// 'http://localhost:3200';
 
 function onaddqty(event) {
     let cart = localStorage.getItem('cart');
