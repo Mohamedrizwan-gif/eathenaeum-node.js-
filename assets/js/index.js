@@ -84,6 +84,7 @@ function logout() {
 window.logout = logout;
 
 function loadpublisher() {
+    checkLogin();
     const search = location.search.split('?');
     let limit = 0;
     if(search.length > 0) {
@@ -110,6 +111,7 @@ function loadpublisher() {
 window.loadpublisher = loadpublisher;
 
 function loadauthor() {
+    checkLogin();
     const search = location.search.split('?');
     let limit = 0;
     if(search.length > 0) {
@@ -136,12 +138,14 @@ function loadauthor() {
 window.loadauthor = loadauthor;
 
 function navigatebookview(event) {
+    checkLogin();
     window.location.assign(`/view?searchpublish=${event.srcElement.innerHTML}`);
 }
 
 window.navigatebookview = navigatebookview;
 
 function navigateauthorview(event) {
+    checkLogin();
     window.location.assign(`/view?searchauthor=${event.srcElement.innerHTML}`);
 }
 
@@ -149,6 +153,7 @@ window.navigateauthorview = navigateauthorview;
 
 function onPublishSearch(event) {
     event.preventDefault();
+    checkLogin();
     const search = event.srcElement[0].value;
     window.location.assign(`/?publish=${search}`);
 }
@@ -157,20 +162,21 @@ window.onPublishSearch = onPublishSearch;
 
 function onAuthorSearch(event) {
     event.preventDefault();
+    checkLogin();
     const search = event.srcElement[0].value;
     window.location.assign(`/?author=${search}`);
 }
 
 window.onAuthorSearch = onAuthorSearch;
 
-document.addEventListener('DOMContentLoaded', () => {
-    pagecart();
-    let loadedlogin = localStorage.getItem('loginpage');
-    if(token !== null || token !== undefined) {
-        if(!loadedlogin) {
-            window.location.assign('/login');
-            localStorage.setItem('loginpage', 'login');
-            alert('Please login to continue');
-        }
-    }    
-});
+function checkLogin() {
+    if(token == null || token == undefined) {
+        window.location.assign('/login');
+        alert('Please login to continue');
+    }
+    return;
+}
+
+window.checkLogin = checkLogin;
+
+pagecart();

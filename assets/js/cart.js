@@ -6,7 +6,7 @@ function onaddqty(event) {
     const total = event.currentTarget.parentElement.parentElement.nextSibling;
     const input = event.currentTarget.parentElement.children[1];
     const price = event.currentTarget.parentElement.parentElement.previousSibling.innerText;
-    if (input && input.value) { 
+    if (input && input.value) {
         input.value = Number(input?.value) + 1;
         total.innerHTML = input.value * Number(price.replace('$', ''));
         total.innerHTML = '$' + total.innerHTML;
@@ -71,7 +71,7 @@ function pagecart() {
     const cart = localStorage.getItem('cart');
     if (cart === null || undefined) {
         const btnclear = document.getElementsByClassName('clear-btn')[0];
-        if(btnclear) {
+        if (btnclear) {
             btnclear.remove();
         }
     }
@@ -137,7 +137,8 @@ function pagecart() {
                     button.appendChild(i);
                     div.appendChild(button);
                     const input = document.createElement('input');
-                    input.classList.add('form-control', 'w-25', 'd-inline');
+                    input.classList.add('form-control', 'w-75', 'd-inline');
+                    input.setAttribute("style", "text-align:center");
                     input.setAttribute("type", "text");
                     input.setAttribute("value", book['qty']);
                     input.setAttribute("min", "0");
